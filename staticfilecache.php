@@ -20,6 +20,8 @@ use RocketTheme\Toolbox\Event\Event;
 class StaticfilecachePlugin extends Plugin
 {
 
+    public static $writeCache = true;
+
     /**
      * @return array
      */
@@ -28,6 +30,7 @@ class StaticfilecachePlugin extends Plugin
         return [
             'onOutputRendered' => ['onOutputRendered', 0],
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onPageNotFound' => ['onPageNotFound', 10],
         ];
     }
 
@@ -54,6 +57,10 @@ class StaticfilecachePlugin extends Plugin
             $this->active = false;
         }
 
+        if (!self::$writeCache) {
+            return;
+        }
+
         $fileName = $this->getCacheFilename();
         $dir = dirname($fileName);
         $error = false;
@@ -74,6 +81,7 @@ class StaticfilecachePlugin extends Plugin
      * @return string
      */
     protected function getCacheFilename() {
+
         $fileName = array(
             rtrim(CACHE_DIR, '/'),
             'staticfilecache',
@@ -88,6 +96,11 @@ class StaticfilecachePlugin extends Plugin
 
         $fileName = implode('/', $fileName);
         return $fileName;
+    }
+
+    public function onPageNotFound()
+    {
+        self::$writeCache = false;
     }
 
 }

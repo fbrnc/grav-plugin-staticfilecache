@@ -1,0 +1,13 @@
+name: Staticfilecache
+version: 1.0.0
+description: The **Feed** plugin is a simple yet powerful add-on that lets you view a Grav Collection as **RSS** or **Atom** news feed.
+icon: cache
+author:
+  name: Fabrizio Branca
+  email: grav@fbrnc.net
+  url: http://fbrnc.net
+homepage: https://github.com/fbrnc/grav-plugin-staticfilecache
+demo: http://fbrnc.net
+keywords: cache
+bugs: https://github.com/fbrnc/grav-plugin-staticfilecache/issues
+license: GPL v3

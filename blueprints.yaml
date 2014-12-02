@@ -1,7 +1,7 @@
 name: Staticfilecache
 version: 1.0.0
 description: Simple static file cache solution
-icon: cache
+icon: paper-plane 
 author:
   name: Fabrizio Branca
   email: grav@fbrnc.net

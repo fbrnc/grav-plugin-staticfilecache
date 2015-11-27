@@ -55,6 +55,7 @@ class StaticfilecachePlugin extends Plugin
     {
         if ($this->isAdmin()) {
             $this->active = false;
+            return;
         }
 
         if (!self::$writeCache) {

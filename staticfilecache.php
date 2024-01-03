@@ -28,7 +28,7 @@ class StaticfilecachePlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            'onOutputRendered' => ['onOutputRendered', 0],
+            'onOutputGenerated' => ['onOutputGenerated', 0],
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onPageNotFound' => ['onPageNotFound', 10],
         ];
@@ -51,10 +51,11 @@ class StaticfilecachePlugin extends Plugin
      * Last possible event:
      * Write generated content to file
      */
-    public function onOutputRendered()
+    public function onOutputGenerated()
     {
         if ($this->isAdmin()) {
             $this->active = false;
+            retrun;
         }
 
         if (!self::$writeCache) {
